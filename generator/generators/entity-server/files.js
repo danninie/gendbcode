@@ -107,6 +107,14 @@ const serverFiles = {
                     renameTo: generator => `${generator.packageFolder}/domain/${generator.asEntity(generator.entityClass)}.java`
                 },
                 {
+                    file: 'package/dao/EntityDao.java',
+                    renameTo: generator => `${generator.packageFolder}/dao/${generator.entityClass}Dao.java`
+                },
+                {
+                    file: 'package/mapper/EntityDataMapper.java',
+                    renameTo: generator => `${generator.packageFolder}/mapper/${generator.entityClass}DataMapper.java`
+                },
+                {
                     file: 'package/repository/EntityRepository.java',
                     renameTo: generator => `${generator.packageFolder}/repository/${generator.entityClass}Repository.java`
                 },
@@ -199,19 +207,19 @@ const serverFiles = {
             condition: generator => !generator.reactive,
             path: SERVER_TEST_SRC_DIR,
             templates: [
-                {
-                    file: 'package/web/rest/EntityResourceIT.java',
-                    options: {
-                        context: {
-                            randexp,
-                            _,
-                            chalkRed: chalk.red,
-                            fs,
-                            SERVER_TEST_SRC_DIR
-                        }
-                    },
-                    renameTo: generator => `${generator.packageFolder}/web/rest/${generator.entityClass}ResourceIT.java`
-                }
+                // {
+                //     file: 'package/web/rest/EntityResourceIT.java',
+                //     options: {
+                //         context: {
+                //             randexp,
+                //             _,
+                //             chalkRed: chalk.red,
+                //             fs,
+                //             SERVER_TEST_SRC_DIR
+                //         }
+                //     },
+                //     renameTo: generator => `${generator.packageFolder}/web/rest/${generator.entityClass}ResourceIT.java`
+                // }
             ]
         },
         {

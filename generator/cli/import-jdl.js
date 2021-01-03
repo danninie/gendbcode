@@ -61,7 +61,9 @@ const updateDeploymentState = importState =>
 function importJDL() {
     logger.info('The JDL is being parsed.');
     const jdlImporter = new jhiCore.JDLImporter(this.jdlFiles, {
-        databaseType: this.prodDatabaseType,
+        //In projects generated using Cassandra databases, ByteBuffer is not supported when importing a JDL file, so modify the following to avoid this
+        databaseType: "no",              
+        //databaseType: this.prodDatabaseType,
         applicationType: this.applicationType,
         applicationName: this.baseName,
         generatorVersion: packagejs.version,
